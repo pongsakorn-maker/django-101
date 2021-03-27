@@ -16,15 +16,22 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
-from blog.views import SimpleBlogView,SimpleBlogDetailView,MultipleBlogView
-from blog.views_api import BlogListApiView
+from rest_framework.routers import DefaultRouter
 
+from blog.views import SimpleBlogView,SimpleBlogDetailView,MultipleBlogView
+from blog.views_api import BlogListApiGenericView,BlogInstanceApiView,BlogViewSet
+
+router = DefaultRouter()
+router.register(r'blogs',BlogViewSet,basename="blogvs")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
 
-    path('api/blogs/', BlogListApiView.as_view(),name="blog-rest-api-list"),
+    path('viewset/',include(router.urls)),
+
+    path('api/blogs/', BlogListApiGenericView.as_view(),name="blog-rest-api-list"),
+    path('api/blogs/<int:id>', BlogInstanceApiView.as_view(),name="blog-instance-api-list"),
 
     path('blog/',MultipleBlogView.as_view(),name='blog-list'),
     path('blog/<int:id>', SimpleBlogView.as_view(),name='simple-blog' ),
