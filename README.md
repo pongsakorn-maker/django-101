@@ -17,3 +17,12 @@ python manage.py migrate
 ```bash
 python manage.py createsuperuser
 ```
+
+flake8
+```bash
+flake8 {sub folder}
+```
+isort 
+```bash
+isort {sub folder}
+```
