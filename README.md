@@ -1,3 +1,13 @@
 # django-101
 
-pip install -r requirement.txt
+**python -m venv venv
+
+**Script/activate
+
+**pip install -r requirement.txt
+
+**cd simple_blog
+
+**python manage.py migrate
+
+**python manage.py createsuperuser
