@@ -1,13 +1,19 @@
 # django-101
-
-$python -m venv venv
-
-$Script/activate
-
-$pip install -r requirement.txt
-
-$ cd simple_blog
-
-$python manage.py migrate
-
-$ python manage.py createsuperuser
+```bash
+python -m venv venv
+```
+```bash
+Script/activate
+```
+```bash
+pip install -r requirement.txt
+```
+```bash
+cd simple_blog
+```
+```bash
+python manage.py migrate
+```
+```bash
+python manage.py createsuperuser
+```
