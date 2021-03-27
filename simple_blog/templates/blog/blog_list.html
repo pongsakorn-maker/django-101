@@ -2,7 +2,7 @@
 <ul>
   {% for blog in blogs %}
   <li>
-    <h3>{{blog.title}}</h3>
+    <a href="{% url 'simple-detail-blog' blog.id %}"><h3>{{blog.title}}</h3></a>
     <span>By : {{blog.created_by}} </span>
     <p>Created : {{blog.created}}</p>
   </li>
