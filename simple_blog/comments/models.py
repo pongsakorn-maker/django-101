@@ -12,9 +12,8 @@ User = get_user_model()
 class Comment(TimeStampedModel):
     comment = models.TextField()
     is_spam = models.BooleanField(default=False)
-    blog = models.ForeignKey(Blog,on_delete=models.CASCADE)
-    created_by = models.ForeignKey(User,on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'Comment for ({self.blog}) by {self.created_by.username}'
-    

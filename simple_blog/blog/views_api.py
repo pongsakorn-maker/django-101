@@ -15,12 +15,13 @@ class BlogViewSet(viewsets.ModelViewSet):
     serializer_class = BlogModelSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['title']
-    search_fields = ['title','content']
+    search_fields = ['title', 'content']
+
 
 class BlogListApiView(APIView):
-    def get(self,request,*args,**kwargs):
+    def get(self, request, *args, **kwargs):
         blogs = Blog.objects.all()
-        serializer = BlogModelSerializer(blogs,many=True)
+        serializer = BlogModelSerializer(blogs, many=True)
         return Response(serializer.data)
 
 

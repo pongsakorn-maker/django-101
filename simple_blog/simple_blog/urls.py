@@ -14,26 +14,26 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include
 
 from rest_framework.routers import DefaultRouter
 
-from blog.views import SimpleBlogView,SimpleBlogDetailView,MultipleBlogView
-from blog.views_api import BlogListApiGenericView,BlogInstanceApiView,BlogViewSet
+from blog.views import SimpleBlogView, SimpleBlogDetailView, MultipleBlogView
+from blog.views_api import BlogListApiGenericView, BlogInstanceApiView, BlogViewSet
 
 router = DefaultRouter()
-router.register(r'blogs',BlogViewSet,basename="blogvs")
+router.register(r'blogs', BlogViewSet, basename="blogvs")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
 
-    path('viewset/',include(router.urls)),
+    path('viewset/', include(router.urls)),
 
-    path('api/blogs/', BlogListApiGenericView.as_view(),name="blog-rest-api-list"),
-    path('api/blogs/<int:id>', BlogInstanceApiView.as_view(),name="blog-instance-api-list"),
+    path('api/blogs/', BlogListApiGenericView.as_view(), name="blog-rest-api-list"),
+    path('api/blogs/<int:id>', BlogInstanceApiView.as_view(), name="blog-instance-api-list"),
 
-    path('blog/',MultipleBlogView.as_view(),name='blog-list'),
-    path('blog/<int:id>', SimpleBlogView.as_view(),name='simple-blog' ),
-    path('blog/detail/<int:id>', SimpleBlogDetailView.as_view(),name='simple-detail-blog' ),
+    path('blog/', MultipleBlogView.as_view(), name='blog-list'),
+    path('blog/<int:id>', SimpleBlogView.as_view(), name='simple-blog'),
+    path('blog/detail/<int:id>', SimpleBlogDetailView.as_view(), name='simple-detail-blog'),
 ]
