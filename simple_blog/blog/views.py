@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView,ListView
 
 from .models import Blog
 
@@ -21,3 +21,8 @@ class SimpleBlogDetailView(DetailView):
     model = Blog
     pk_url_kwarg = 'id'
     context_object_name = 'blog'
+
+
+class MultipleBlogView(ListView):
+    model = Blog
+    context_object_name = 'blogs'

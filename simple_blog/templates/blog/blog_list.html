@@ -1,0 +1,10 @@
+<h1>My Blog</h1>
+<ul>
+  {% for blog in blogs %}
+  <li>
+    <h3>{{blog.title}}</h3>
+    <span>By : {{blog.created_by}} </span>
+    <p>Created : {{blog.created}}</p>
+  </li>
+  {% endfor %}
+</ul>
