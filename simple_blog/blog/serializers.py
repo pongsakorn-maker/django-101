@@ -3,7 +3,6 @@ from rest_framework import serializers
 
 from .models import Blog
 
-
 User = get_user_model()
 
 
